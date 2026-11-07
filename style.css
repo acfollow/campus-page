@@ -1,0 +1,165 @@
+/* 统一盒模型：width 包含内容、padding 和 border，计算宽度更直观。 */
+* {
+  box-sizing: border-box;
+}
+
+/* 设置整页的默认字体、颜色和行高，中文正文保持清晰易读。 */
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #202a35;
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* 内容区最多 800px，窄屏时左右各留 16px；auto 让内容水平居中。 */
+.card {
+  width: min(calc(100% - 32px), 800px);
+  margin: 32px auto;
+  padding: 0 0 24px;
+}
+
+/* 活动页上方的小字提示，与主标题拉开层级。 */
+.notice {
+  margin: 0 0 8px;
+  color: #526171;
+  font-size: 14px;
+}
+
+/* 主标题的内边距撑开文字和下方边框；可修改 padding-bottom 观察盒模型。 */
+h1 {
+  margin: 0 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #244b74;
+  font-size: 32px;
+  line-height: 1.4;
+}
+
+/* 用统一的字号、颜色和外边距区分各个内容章节。 */
+h2 {
+  margin: 28px 0 12px;
+  color: #244b74;
+  font-size: 21px;
+}
+
+/* 给段落设置上下间距，避免文字挤在一起。 */
+p {
+  margin: 8px 0;
+}
+
+/* 时间和地点用 Flex 横向排列，宽度不足时允许换行。 */
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 32px;
+}
+
+/* 表格铺满内容区，合并相邻边框以免出现双线。 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* 表格标题左对齐，与数据区留出少量间距。 */
+caption {
+  padding: 0 0 8px;
+  text-align: left;
+  color: #526171;
+  font-size: 14px;
+}
+
+/* 统一表头和数据格的内边距、边框及文字对齐方式。 */
+th,
+td {
+  padding: 10px 12px;
+  border: 1px solid #b9c2cc;
+  text-align: left;
+}
+
+/* 表头使用浅色底，方便对应每一列的数据。 */
+th {
+  background: #eef2f6;
+}
+
+/* 只对直接子元素布局：两个 form-field 在宽屏同排，窄屏换行。 */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin-bottom: 16px;
+}
+
+/* 每个字段可以伸缩，以 240px 为初始宽度；min-width: 0 避免内容撑破容器。 */
+.form-field {
+  flex: 1 1 240px;
+  min-width: 0;
+}
+
+/* 标签独占一行，让填写说明位于控件上方。 */
+label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* 输入框与下拉框占满所属字段的宽度；继承字体以保持中文显示一致。 */
+input,
+select {
+  width: 100%;
+  min-height: 44px;
+  padding: 8px;
+  border: 1px solid #6d7c8c;
+  border-radius: 0;
+  background: #ffffff;
+  color: #202a35;
+  font: inherit;
+}
+
+/* 按钮保留足够的高度；pointer 提示鼠标用户这里可以点击。 */
+.join-button {
+  min-height: 44px;
+  padding: 8px 28px;
+  border: 1px solid #244b74;
+  border-radius: 0;
+  background: #244b74;
+  color: #ffffff;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* 鼠标停留时加深背景，给出轻量反馈。 */
+.join-button:hover {
+  background: #173652;
+}
+
+/* 键盘 Tab 导航时显示明显轮廓，用户能看出当前焦点。 */
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: 3px solid #244b74;
+  outline-offset: 3px;
+}
+
+/* 状态文字使用较深颜色和粗体，便于发现报名结果。 */
+.status {
+  margin-top: 16px;
+  color: #244b74;
+  font-weight: 700;
+}
+
+/* 补充说明使用较小字号，与主要操作内容区分。 */
+.demo-note {
+  color: #526171;
+  font-size: 14px;
+}
+
+/* 媒体查询只在视口不超过 480px 时生效，调整窄屏中的间距与标题。 */
+@media (max-width: 480px) {
+  .card {
+    margin-top: 20px;
+  }
+
+  h1 {
+    font-size: 27px;
+  }
+}

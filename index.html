@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- 页面主要使用简体中文，便于浏览器和读屏软件识别。 -->
+<html lang="zh-CN">
+<head>
+  <!-- 统一使用 UTF-8 编码，避免中文显示为乱码。 -->
+  <meta charset="UTF-8">
+  <!-- 让手机按设备宽度显示页面，为窄屏布局做好准备。 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 这是浏览器标签页的标题，正文中的大标题由 h1 显示。 -->
+  <title>前端体验工作坊｜课堂示例</title>
+  <!-- 引入同一文件夹中的 CSS；路径或文件名写错，样式就不会生效。 -->
+  <link rel="stylesheet" href="style.css">
+  <!-- 引入 JavaScript；defer 让脚本等 HTML 解析完成后再执行。 -->
+  <script src="script.js" defer></script>
+</head>
+<!-- body 中的内容会显示在网页里；下面先搭结构，再添加样式和交互。 -->
+<body>
+  <!-- main 标记页面的主要内容，article 表示一份可以独立阅读的活动介绍。 -->
+  <main>
+    <article class="card">
+      <p class="notice">校园活动页 · 虚构课堂示例</p>
+      <!-- h1 是页面主标题；下面的 h2 用来区分活动介绍、日程等章节。 -->
+      <h1>前端体验工作坊</h1>
+      <h2>活动介绍</h2>
+      <p>用 HTML 组织内容，用 CSS 设置样式，用 JavaScript 处理交互。</p>
+      <!-- div 把时间与地点放在同一组；class 供 CSS 选择这组内容。 -->
+      <div class="meta">
+        <p><strong>时间：</strong>6 月 15 日 14:00</p>
+        <p><strong>地点：</strong>图书馆 201</p>
+      </div>
+      <h2>活动日程</h2>
+      <!-- 表格用于有行列关系的数据；caption 为表格提供标题。 -->
+      <table>
+        <caption>工作坊日程（示例）</caption>
+        <!-- thead 放表头；th 的 scope="col" 说明它对应整列数据。 -->
+        <thead>
+          <tr><th scope="col">时间</th><th scope="col">内容</th></tr>
+        </thead>
+        <!-- tbody 放数据行；每个 tr 是一行，每个 td 是一个数据单元格。 -->
+        <tbody>
+          <tr><td>14:00</td><td>HTML 结构</td></tr>
+          <tr><td>14:30</td><td>CSS 样式</td></tr>
+        </tbody>
+      </table>
+      <h2>体验报名</h2>
+      <!-- form 组织整组输入；id 是 JavaScript 查找这个表单的名字。 -->
+      <form id="join-form" action="#">
+        <!-- 这一层是 Flex 父容器，内部的两个 form-field 负责排列。 -->
+        <div class="form-row">
+          <div class="form-field">
+            <!-- for 与输入框的 id 对应：点击标签也能把焦点移到输入框。 -->
+            <label for="student-name">学习昵称（必填，使用示例名）</label>
+            <!-- required 表示必填，浏览器会先检查，再触发表单提交事件。 -->
+            <input id="student-name" name="nickname" type="text" required>
+          </div>
+          <div class="form-field">
+            <label for="experience">前端学习经历</label>
+            <!-- select 提供单选下拉框；用户看见中文，程序读取 option 的 value。 -->
+            <select id="experience" name="experience">
+              <option value="first">第一次接触</option>
+              <option value="some">接触过一点</option>
+            </select>
+          </div>
+        </div>
+        <!-- submit 表示提交表单；本页脚本会在当前网页内切换报名状态。 -->
+        <button id="join-btn" class="join-button" type="submit" aria-pressed="false">报名参加</button>
+      </form>
+      <!-- 这一行显示当前状态；aria-live 让读屏软件获知后续文字变化。 -->
+      <p id="status" class="status" aria-live="polite">尚未报名</p>
+      <p class="demo-note">仅供课堂演示，不会提交真实信息。刷新后恢复未报名。</p>
+    </article>
+  </main>
+</body>
+</html>
